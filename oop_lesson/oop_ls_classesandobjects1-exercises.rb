@@ -17,6 +17,13 @@
 #   
 #   Then add an accessor method that allows you to view, 
 #   but not modify, the year of your car.
+#
+# EXERCISE 3
+#   You want to create a nice interface that allows you to accurately 
+#   describe the action you want your program to perform. 
+#   
+#   Create a method called spray_paint that can be called on an object
+#   and will modify the color of the car.
 
 class MyCar
   attr_accessor :make, :model, :speed, :engine_status
@@ -85,6 +92,10 @@ class MyCar
   def current_speed
     puts "#{make_and_model} is now travelling #{speed} mph."
   end
+
+  def spray_paint(new_color)
+    self.color = new_color
+  end
 end
 
 # toyota test
@@ -120,11 +131,18 @@ honda = MyCar.new("Honda", "Civic", "Black", 2014)
 # honda.shut_down
 
 # exercise 2 tests
-p toyota.year
-p honda.year
+# p toyota.year
+# p honda.year
 
-toyota.color = "Yellow"
-honda.color = "Red"
+# toyota.color = "Yellow"
+# honda.color = "Red"
+# p toyota.color
+# p honda.color
+
+# exercise 3 tests
+toyota.spray_paint("Green")
+honda.spray_paint("Purple")
+
 p toyota.color
 p honda.color
 
