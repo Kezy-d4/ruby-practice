@@ -10,14 +10,24 @@
 #   
 #   Create instance methods that allow the car to 
 #   speed up, brake, and shut the car off.
+#   
+# EXERCISE 2
+#   Add an accessor method to your MyCar class to change and view the
+#   color of your car. 
+#   
+#   Then add an accessor method that allows you to view, 
+#   but not modify, the year of your car.
 
 class MyCar
-  attr_accessor :make, :model, :color, :speed, :engine_status
+  attr_accessor :make, :model, :speed, :engine_status
+  attr_accessor :color
+  attr_reader :year
 
-  def initialize(make, model, color)
+  def initialize(make, model, color, year)
     @make = make
     @model = model
     @color = color
+    @year = year
     @speed = 0
     @engine_status = "off"
   end
@@ -71,43 +81,52 @@ class MyCar
       puts "#{make_and_model} isn't running."
     end
   end
+
+  def current_speed
+    puts "#{make_and_model} is now travelling #{speed} mph."
+  end
 end
 
 # toyota test
-toyota = MyCar.new("Toyota", "Corolla", "Blue")
-p toyota
+toyota = MyCar.new("Toyota", "Corolla", "Blue", 2016)
+# p toyota
+# toyota.start_up
 
-toyota.start_up
+# 6.times do 
+#   toyota.speed_up
+#   toyota.current_speed
+# end
 
-6.times do 
-  toyota.speed_up
-  puts "#{toyota.speed} mph"
-end
-
-7.times do 
-  toyota.brake
-  puts "#{toyota.speed} mph"
-end
-
-toyota.shut_down
+# 7.times do 
+#   toyota.brake
+#   toyota.current_speed
+# end
+# toyota.shut_down
 
 # honda test
-honda = MyCar.new("Honda", "Civic", "Black")
-p honda
+honda = MyCar.new("Honda", "Civic", "Black", 2014)
+# p honda
+# honda.start_up
 
-honda.start_up
+# 6.times do
+#   honda.speed_up
+#   honda.current_speed
+# end
 
-6.times do
-  honda.speed_up
-  puts "#{honda.speed} mph"
-end
+# 7.times do 
+#   honda.brake
+#   honda.current_speed
+# end
+# honda.shut_down
 
-7.times do 
-  honda.brake
-  puts "#{honda.speed} mph"
-end
+# exercise 2 tests
+p toyota.year
+p honda.year
 
-honda.shut_down
+toyota.color = "Yellow"
+honda.color = "Red"
+p toyota.color
+p honda.color
 
   
 
