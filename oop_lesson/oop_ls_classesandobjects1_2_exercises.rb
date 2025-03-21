@@ -24,16 +24,21 @@
 #   
 #   Create a method called spray_paint that can be called on an object
 #   and will modify the color of the car.
+#   
+# EXERCISE 4
+#   Add a class method to your MyCar class that calculates the gas mileage
+#   (i.e. miles per gallon) of any car.
 
 class MyCar
   attr_accessor :make, :model, :speed, :engine_status
   attr_accessor :color
   attr_reader :year
 
-  def initialize(make, model, color, year)
+  def initialize(make, model, color, year, mpg)
     @make = make
     @model = model
     @color = color
+    @mpg = mpg
     @year = year
     @speed = 0
     @engine_status = "off"
@@ -96,10 +101,14 @@ class MyCar
   def spray_paint(new_color)
     self.color = new_color
   end
+
+  def self.calculate_gas_mileage(gallons, miles)
+    puts "#{miles / gallons} miles per gallon."
+  end
 end
 
 # toyota test
-toyota = MyCar.new("Toyota", "Corolla", "Blue", 2016)
+toyota = MyCar.new("Toyota", "Corolla", "Blue", 2016, 25)
 # p toyota
 # toyota.start_up
 
@@ -115,7 +124,7 @@ toyota = MyCar.new("Toyota", "Corolla", "Blue", 2016)
 # toyota.shut_down
 
 # honda test
-honda = MyCar.new("Honda", "Civic", "Black", 2014)
+honda = MyCar.new("Honda", "Civic", "Black", 2014, 32)
 # p honda
 # honda.start_up
 
@@ -140,11 +149,14 @@ honda = MyCar.new("Honda", "Civic", "Black", 2014)
 # p honda.color
 
 # exercise 3 tests
-toyota.spray_paint("Green")
-honda.spray_paint("Purple")
+# toyota.spray_paint("Green")
+# honda.spray_paint("Purple")
 
-p toyota.color
-p honda.color
+# p toyota.color
+# p honda.color
+
+# exercise 4 tests
+MyCar.calculate_gas_mileage(2, 23.0)
 
   
 
