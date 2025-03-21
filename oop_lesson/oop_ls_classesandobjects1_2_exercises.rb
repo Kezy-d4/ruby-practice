@@ -28,9 +28,12 @@
 # EXERCISE 4
 #   Add a class method to your MyCar class that calculates the gas mileage
 #   (i.e. miles per gallon) of any car.
+#   
+# EXERCISE 5
+#   Override the #to_s method to create a user friendly print out of your object.
 
 class MyCar
-  attr_accessor :make, :model, :speed, :engine_status
+  attr_accessor :make, :model, :speed, :engine_status, :mpg
   attr_accessor :color
   attr_reader :year
 
@@ -105,6 +108,10 @@ class MyCar
   def self.calculate_gas_mileage(gallons, miles)
     puts "#{miles / gallons} miles per gallon."
   end
+
+  def to_s
+    "#{year} #{color} #{make_and_model} achieves #{mpg} mpg."
+  end
 end
 
 # toyota test
@@ -156,7 +163,13 @@ honda = MyCar.new("Honda", "Civic", "Black", 2014, 32)
 # p honda.color
 
 # exercise 4 tests
-MyCar.calculate_gas_mileage(2, 23.0)
+# MyCar.calculate_gas_mileage(2, 23.0)
+
+# exercise 5 tests
+p honda
+puts honda
+p toyota
+puts toyota
 
   
 
