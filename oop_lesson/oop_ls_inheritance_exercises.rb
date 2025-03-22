@@ -13,6 +13,15 @@
 #   objects created that inherit from the superclass. Create a method to print out
 #   the value of this class variable as well.
 
+# EXERCISE 3
+#   Create a module that you can mix in to ONE of your subclasses that describes a
+#   behavior unique to that subclass.
+
+module Hitchable
+  def hitch_cargo
+    puts "Hitching up cargo to #{make} #{model}..."
+  end
+end
 
 class Vehicle
   @@number_of_vehicles = 0
@@ -74,6 +83,7 @@ class MyCar < MotorVehicle
 end
 
 class MyTruck < MotorVehicle
+  include Hitchable
   NUMBER_OF_DOORS = 2
 end
 
@@ -87,14 +97,15 @@ end
 # honda.shut_down
 # puts honda
 
-# volvo = MyTruck.new("Volvo", "VNL", "2024", 50, "turquoise", 0)
-# puts volvo
-# volvo.spray_paint("black")
-# volvo.start_up
-# volvo.speed_up(100)
-# volvo.slow_down(50)
-# volvo.shut_down
-# puts volvo
+volvo = MyTruck.new("Volvo", "VNL", "2024", 50, "turquoise", 0)
+puts volvo
+volvo.spray_paint("black")
+volvo.start_up
+volvo.speed_up(100)
+volvo.slow_down(50)
+volvo.shut_down
+volvo.hitch_cargo
+puts volvo
 
 # MotorVehicle.calculate_gas_mileage(10, 122.0)
 
