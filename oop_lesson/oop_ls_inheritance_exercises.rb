@@ -30,6 +30,12 @@
 #   the vehicle. Make sure the private method is not available from outside of the 
 #   class. You'll need to use Ruby's built-in Time class to help.
 
+# EXERCISE 7
+#   Create a class 'Student' with attributes name and grade. Do NOT make the grade 
+#   getter public, so joe.grade will raise an error. Create a better_grade_than? 
+#   method, that you can call like so...
+#   puts "Well done!" if joe.better_grade_than?(bob)
+
 module Hitchable
   def hitch_cargo
     puts "Hitching up cargo to #{make} #{model}..."
@@ -121,16 +127,16 @@ end
 # puts honda
 # honda.current_age
 
-volvo = MyTruck.new("Volvo", "VNL", "2024", 50, "turquoise", 0)
-puts volvo
-volvo.spray_paint("black")
-volvo.start_up
-volvo.speed_up(100)
-volvo.slow_down(50)
-volvo.shut_down
-volvo.hitch_cargo
-puts volvo
-volvo.current_age
+# volvo = MyTruck.new("Volvo", "VNL", "2024", 50, "turquoise", 0)
+# puts volvo
+# volvo.spray_paint("black")
+# volvo.start_up
+# volvo.speed_up(100)
+# volvo.slow_down(50)
+# volvo.shut_down
+# volvo.hitch_cargo
+# puts volvo
+# volvo.current_age
 
 # MotorVehicle.calculate_gas_mileage(10, 122.0)
 # Vehicle.print_number_of_vehicles
@@ -141,3 +147,28 @@ volvo.current_age
 # puts MyTruck.ancestors
 # puts MotorVehicle.ancestors
 # puts Vehicle.subclasses
+
+class Student
+  attr_accessor :name
+
+  def initialize(n, g)
+    @name = n
+    @grade = g
+  end
+
+  def better_grade_than?(other_student)
+    self.grade > other_student.get_grade
+  end
+
+  def get_grade
+    self.grade
+  end
+
+  private
+  attr_reader :grade
+end
+
+joe = Student.new("Joe", 16)
+bob = Student.new("Bob", 15)
+puts "Well done!" if joe.better_grade_than?(bob)
+
