@@ -8,7 +8,19 @@
 #   Then create a new class called MyTruck that inherits from your superclass that
 #   also has a constant defined that separates it from the MyCar class in some way.
 
+# EXERCISE 2
+#   Add a class variable to your superclass that can keep track of the number of
+#   objects created that inherit from the superclass. Create a method to print out
+#   the value of this class variable as well.
+
+
 class Vehicle
+  @@number_of_vehicles = 0
+
+  def self.print_number_of_vehicles
+    puts "There are currently #{@@number_of_vehicles} vehicles instantiated."
+  end
+
   def spray_paint(new_color)
     puts "The new #{new_color} paint job on your #{make} #{model} looks great!"
     self.color = new_color
@@ -16,12 +28,12 @@ class Vehicle
 
   def speed_up(number)
     self.speed += number
-    puts "#{make} #{model} sped up, and is now travelling #{speed} mph."
+    puts "#{make} #{model} sped up, and is now traveling #{speed} mph."
   end
 
   def slow_down(number)
     self.speed -= number
-    puts "#{make} #{model} slowed down, and is now travelling #{speed} mph."
+    puts "#{make} #{model} slowed down, and is now traveling #{speed} mph."
   end
 end
 
@@ -36,6 +48,7 @@ class MotorVehicle < Vehicle
     @mpg = mpg
     @color = co
     @speed = sp
+    @@number_of_vehicles += 1
   end
 
   def start_up
@@ -52,7 +65,7 @@ class MotorVehicle < Vehicle
   end
 
   def to_s
-    "My #{color} #{year} #{make} #{model} achieves #{mpg} mpg, and is currently travelling #{speed} mph."
+    "My #{color} #{year} #{make} #{model} achieves #{mpg} mpg, and is currently traveling #{speed} mph."
   end
 end
 
@@ -64,15 +77,15 @@ class MyTruck < MotorVehicle
   NUMBER_OF_DOORS = 2
 end
 
-honda = MyCar.new("Honda", "Civic", "2012", 22, "silver", 0)
-puts honda
-p honda
-honda.spray_paint("black")
-honda.start_up
-honda.speed_up(100)
-honda.slow_down(50)
-honda.shut_down
-puts honda
+# honda = MyCar.new("Honda", "Civic", "2012", 22, "silver", 0)
+# puts honda
+# p honda
+# honda.spray_paint("black")
+# honda.start_up
+# honda.speed_up(100)
+# honda.slow_down(50)
+# honda.shut_down
+# puts honda
 
 # volvo = MyTruck.new("Volvo", "VNL", "2024", 50, "turquoise", 0)
 # puts volvo
@@ -83,4 +96,6 @@ puts honda
 # volvo.shut_down
 # puts volvo
 
-MotorVehicle.calculate_gas_mileage(10, 122.0)
+# MotorVehicle.calculate_gas_mileage(10, 122.0)
+
+Vehicle.print_number_of_vehicles

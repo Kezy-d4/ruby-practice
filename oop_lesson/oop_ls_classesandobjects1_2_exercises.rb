@@ -98,7 +98,7 @@ class MyCar
   end
 
   def current_speed
-    puts "#{make_and_model} is now travelling #{speed} mph."
+    puts "#{make_and_model} is now traveling #{speed} mph."
   end
 
   def spray_paint(new_color)
