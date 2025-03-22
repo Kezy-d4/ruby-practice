@@ -20,6 +20,11 @@
 # EXERCISE 4
 #   Print to the screen your method lookup for the classes that you have created.
 
+# EXERCISE 5
+#   Move all of the methods from the MyCar class that also pertain to the MyTruck 
+#   class into the Vehicle class. Make sure that all of your previous method calls 
+#   are working when you are finished.
+
 module Hitchable
   def hitch_cargo
     puts "Hitching up cargo to #{make} #{model}..."
@@ -113,7 +118,9 @@ end
 # MotorVehicle.calculate_gas_mileage(10, 122.0)
 # Vehicle.print_number_of_vehicles
 
-puts "---MyCar method lookup---"
-puts MyCar.ancestors
-puts "---MyTruck method lookup---"
-puts MyTruck.ancestors
+# puts "---MyCar method lookup---"
+# puts MyCar.ancestors
+# puts "---MyTruck method lookup---"
+# puts MyTruck.ancestors
+# puts MotorVehicle.ancestors
+# puts Vehicle.subclasses
