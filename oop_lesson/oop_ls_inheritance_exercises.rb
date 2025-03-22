@@ -25,6 +25,11 @@
 #   class into the Vehicle class. Make sure that all of your previous method calls 
 #   are working when you are finished.
 
+# EXERCISE 6
+#   Write a method called age that calls a private method to calculate the age of
+#   the vehicle. Make sure the private method is not available from outside of the 
+#   class. You'll need to use Ruby's built-in Time class to help.
+
 module Hitchable
   def hitch_cargo
     puts "Hitching up cargo to #{make} #{model}..."
@@ -51,6 +56,16 @@ class Vehicle
   def slow_down(number)
     self.speed -= number
     puts "#{make} #{model} slowed down, and is now traveling #{speed} mph."
+  end
+
+  def current_age
+    puts "#{make} #{model} is #{calculate_age} years old."
+  end
+
+  private
+
+  def calculate_age 
+    Time.new.year - self.year.to_i
   end
 end
 
@@ -104,16 +119,18 @@ end
 # honda.slow_down(50)
 # honda.shut_down
 # puts honda
+# honda.current_age
 
-# volvo = MyTruck.new("Volvo", "VNL", "2024", 50, "turquoise", 0)
-# puts volvo
-# volvo.spray_paint("black")
-# volvo.start_up
-# volvo.speed_up(100)
-# volvo.slow_down(50)
-# volvo.shut_down
-# volvo.hitch_cargo
-# puts volvo
+volvo = MyTruck.new("Volvo", "VNL", "2024", 50, "turquoise", 0)
+puts volvo
+volvo.spray_paint("black")
+volvo.start_up
+volvo.speed_up(100)
+volvo.slow_down(50)
+volvo.shut_down
+volvo.hitch_cargo
+puts volvo
+volvo.current_age
 
 # MotorVehicle.calculate_gas_mileage(10, 122.0)
 # Vehicle.print_number_of_vehicles
