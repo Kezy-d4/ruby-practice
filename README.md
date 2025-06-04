@@ -1,1 +1,1 @@
-# ruby-testing
+# ruby-practice
