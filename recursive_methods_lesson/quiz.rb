@@ -59,21 +59,21 @@ end
 
 # Use the roman_mapping hash to define a recursive method that converts an 
 # integer to a Roman numeral.
-roman_mapping = {
-  1000 => "M",
-  900 => "CM",
-  500 => "D",
-  400 => "CD",
-  100 => "C",
-  90 => "XC",
-  50 => "L",
-  40 => "XL",
-  10 => "X",
-  9 => "IX",
-  5 => "V",
-  4 => "IV",
-  1 => "I"
-}
+# roman_mapping = {
+#   1000 => "M",
+#   900 => "CM",
+#   500 => "D",
+#   400 => "CD",
+#   100 => "C",
+#   90 => "XC",
+#   50 => "L",
+#   40 => "XL",
+#   10 => "X",
+#   9 => "IX",
+#   5 => "V",
+#   4 => "IV",
+#   1 => "I"
+# }
 def integer_to_roman(roman_mapping, number, result = "")
   return result if number == 0
   roman_mapping.keys.each do |divisor|
@@ -82,3 +82,33 @@ def integer_to_roman(roman_mapping, number, result = "")
     return integer_to_roman(roman_mapping, modulus, result) if quotient > 0
   end
 end
+
+# Use the roman_mapping hash to define a recursive method that converts a Roman 
+# numeral to an integer.
+roman_mapping = {
+  "M" => 1000,
+  "CM" => 900,
+  "D" => 500,
+  "CD" => 400,
+  "C" => 100,
+  "XC" => 90,
+  "L" => 50,
+  "XL" => 40,
+  "X" => 10,
+  "IX" => 9,
+  "V" => 5,
+  "IV" => 4,
+  "I" => 1
+}
+def roman_to_integer(roman_mapping, str, result = 0)
+  return result if str.empty?
+  roman_mapping.keys.each do |roman|
+    if str.start_with?(roman)
+      result += roman_mapping[roman]
+      str = str.slice(roman.length, str.length)
+      return roman_to_integer(roman_mapping, str, result)
+    end
+  end
+end
+
+
